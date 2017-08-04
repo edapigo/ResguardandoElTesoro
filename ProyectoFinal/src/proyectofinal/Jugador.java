@@ -5,22 +5,13 @@
  */
 package proyectofinal;
 
-import javafx.scene.layout.Pane;
-
 /**
  *
- * @author Estudiante
+ * @author usuario
  */
-public class PaneOrganize {
-    private Pane root;
+public class Jugador {
 
-    public PaneOrganize() {
-        root = new Pane();
+    public Jugador() {
     }
-
-    public Pane getRoot() {
-        return root;
-    }
-    
     
 }

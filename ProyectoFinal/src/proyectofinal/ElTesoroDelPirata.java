@@ -20,25 +20,15 @@ import javafx.stage.Stage;
 public class ElTesoroDelPirata extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
+    public void start(Stage stage) {
+        PaneOrganize po= new PaneOrganize();
+        ElijeCapitan eC = new ElijeCapitan();
+        Scene scene = new Scene(eC.getRoot(),480,600);
+        stage.setScene(scene);
+        stage.setTitle("Resguardando el tesoro");
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setResizable(true);
+        stage.show();
     }
 
     /**

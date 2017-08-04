@@ -5,22 +5,17 @@
  */
 package proyectofinal;
 
-import javafx.scene.layout.Pane;
 
 /**
  *
- * @author Estudiante
+ * @author usuario
  */
-public class PaneOrganize {
-    private Pane root;
+public class Salazar extends Capitan {
 
-    public PaneOrganize() {
-        root = new Pane();
+    public Salazar(int alcance, int posicionY, int posicionX, String nombreImagen, int altura, int ancho) {
+        super(alcance, posicionY, posicionX, nombreImagen, altura, ancho);
     }
 
-    public Pane getRoot() {
-        return root;
-    }
     
     
 }
