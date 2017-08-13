@@ -23,11 +23,11 @@ public class ElTesoroDelPirata extends Application {
     public void start(Stage stage) {
         PaneOrganize po= new PaneOrganize();
         ElijeCapitan eC = new ElijeCapitan();
-        Scene scene = new Scene(eC.getRoot(),480,600);
+        Scene scene = new Scene(po.getRoot(),1000, 750);
         stage.setScene(scene);
         stage.setTitle("Resguardando el tesoro");
         
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.show();
     }
 
