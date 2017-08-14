@@ -6,7 +6,11 @@
 package proyectofinal;
 
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 /**
  * Una clase para representar a los a los labels en el juego.
@@ -25,6 +29,12 @@ public class TitulosLabel {
        l.setLayoutY(posY);
        l.setStyle(estilo);
        l.setTextFill(color);
+       DropShadow ds = new DropShadow();
+       ds.setOffsetY(2.0f);
+       ds.setColor(Color.rgb(35, 42, 228, .99));
+       l.setCache(true);
+       l.setEffect(ds);
+       l.setFont(Font.font(null, FontWeight.EXTRA_BOLD,32));
        
     }
 
