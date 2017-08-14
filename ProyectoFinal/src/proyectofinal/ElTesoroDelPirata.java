@@ -9,8 +9,10 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -25,9 +27,10 @@ public class ElTesoroDelPirata extends Application {
     public void start(Stage stage) {
         PaneOrganize po= new PaneOrganize();
         ElijeCapitan eC = new ElijeCapitan();
-        Scene scene = new Scene(po.getRoot(),1000, 750);
+        Scene scene = new Scene(eC.getRoot(),800, 550);
         stage.setScene(scene);
         stage.setTitle("Resguardando el tesoro");
+        scene.setCursor(new ImageCursor(new Image("cursor.png")));
         
         stage.setResizable(false);
         stage.show();
