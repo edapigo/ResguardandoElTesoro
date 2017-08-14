@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 
 /**
  *
- * @author Estudiante
+ * @author Edward Pino
  */
 public class PaneOrganize {
     private Pane root;
@@ -29,16 +29,21 @@ public class PaneOrganize {
         iv.setFitWidth(1020);
         iv.setFitHeight(770);
         
-        TitulosLabel titulo = new TitulosLabel("TYPERSHARK","-fx-font: 40 elephant",450,10,270,30, Color.DARKGRAY);
+        TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO","-fx-font: 40 elephant",450,10,270,30, Color.FIREBRICK);
         
-        Button btnNuevoJuego = new Button("Nuevo Juego");
-        Button btnHistorial = new Button("Historial de jugadores");
-        Button btnSalir = new Button("Salir");
+        Boton btnNuevoJuego= new Boton("NUEVO JUEGO","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 80, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnHistorial= new Boton("HISTORIAL","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 300, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnSalir= new Boton("SALIR","-fx-font: 20 century; -fx-background-radius: 30;", 100, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+//      Button btnNuevoJuego = new Button("Nuevo Juego");
+//      Button btnHistorial = new Button("Historial de jugadores");
+//      Button btnSalir = new Button("Salir");
+        
         
         
         
 
         root.getChildren().addAll(iv);
+        root.getChildren().addAll(titulo.getL(),btnNuevoJuego.getBtn(), btnHistorial.getBtn(), btnSalir.getBtn());
         
     }
     

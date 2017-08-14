@@ -9,8 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 /**
- *
- * @author usuario
+ * Una clase para representar a los a los labels en el juego.
+ * @version 1.0
+ * @author Andres Ante
+ * @author Edward Pino
+ * @author Xavier Pita
  */
 public class TitulosLabel {
     private Label l;
