@@ -7,6 +7,7 @@ package proyectofinal;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -42,33 +43,30 @@ public class PaneOrganizer {
         
         TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO","-fx-font: 40 elephant",450,10,270,30, Color.FIREBRICK, true);
         
-        Boton btnNuevoJuego= new Boton("NUEVO JUEGO","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 80, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnJugar= new Boton("JUGAR","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 80, 410, 10, Color.DARKSLATEBLUE);
         Boton btnHistorial= new Boton("HISTORIAL","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 300, 410, 10, Color.DARKSLATEBLUE);
         Boton btnSalir= new Boton("SALIR","-fx-font: 20 century; -fx-background-radius: 30;", 100, 60, 520, 410, 10, Color.DARKSLATEBLUE);
 
         root.getChildren().addAll(iv);
-        root.getChildren().addAll(titulo.getL(),btnNuevoJuego.getBtn(), btnHistorial.getBtn(), btnSalir.getBtn());
+        root.getChildren().addAll(titulo.getL(),btnJugar.getBtn(), btnHistorial.getBtn(), btnSalir.getBtn());
         inicio = new Scene(root, 800, 550);
                 
         //Evento de Boton NuevoJuego
-        btnNuevoJuego.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            //
-            }
+        btnJugar.getBtn().setOnAction(e -> {
+            IngresoDatos pd = new IngresoDatos(escenario);
+            pd.getPlayerData().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(pd.getPlayerData());
         });
+        
         //Evento de Boton Historial
-        btnHistorial.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            //
-            }
+        btnHistorial.getBtn().setOnAction(e -> {
+            Historial h = new Historial(escenario);
+            h.getHistorial().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(h.getHistorial());
         });
         
         //Evento de Boton Salir
-        btnSalir.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
-        });
+        btnSalir.getBtn().setOnAction(e -> System.exit(0));
         
         
     }   
@@ -77,7 +75,7 @@ public class PaneOrganizer {
         return root;
     }
     
-    public Scene getScene() {
+    public Scene getInicio() {
         return inicio;
     }
     

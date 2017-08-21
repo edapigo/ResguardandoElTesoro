@@ -14,6 +14,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.ImageCursor;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -23,10 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -34,6 +33,7 @@ import javafx.stage.Stage;
  * @author HP ELECTRONIC
  */
 public class Historial {
+    private Scene historial;
     private Pane windowHist;
     private File file;
     private ImageView ivHist;
@@ -52,7 +52,73 @@ public class Historial {
     private SimpleStringProperty jugador,tiempo,monedas,fecha,nivel,estado;
     
     
-    
+    public Historial(Stage escenario) {
+        
+        try{
+            imagen = new Image("fondoHistorial.jpg");
+        
+        }
+        catch(Exception e){System.out.println("No lee imagen");}
+        vi=new ImageView(imagen);
+        vi.setFitHeight(600);
+        vi.setFitWidth(900);
+        vi.setImage (imagen);
+        
+        windowHist=new Pane();
+        windowHist.getChildren().add(vi);
+        
+        TitulosLabel titulo= new TitulosLabel("HISTORIAL DE JUGADORES", "-fx-font: 20 elephant",450,10,100,20, Color.WHITESMOKE,true);
+        TitulosLabel player= new TitulosLabel("JUGADOR","-fx-font: 20 elephant",400,10,10,120, Color.WHITESMOKE,true);
+        TitulosLabel time= new TitulosLabel("TIEMPO", "-fx-font: 20 elephant;", 400, 10,150, 120, Color.WHITESMOKE,true);
+        TitulosLabel coin= new TitulosLabel("MONEDA", "-fx-font: 20 elephant;", 400, 10, 300,120, Color.WHITESMOKE,true);
+        TitulosLabel date= new TitulosLabel("FECHA ","-fx-font: 20 elephant",400,10,450,120, Color.WHITESMOKE,true);
+        TitulosLabel rank= new TitulosLabel("NIVEL ","-fx-font: 20 elephant",400,10,600,120, Color.WHITESMOKE,true);
+        TitulosLabel siono= new TitulosLabel("GANO ","-fx-font: 20 elephant",400,10,700,120, Color.WHITESMOKE,true);
+
+//        TitulosLabel 
+        table = new TableView<DatosJuego>();
+        
+        //Se crea las columnas 
+        TableColumn jugadorCol = new TableColumn("Jugador");
+        jugadorCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Jugador"));
+        jugadorCol.setMinWidth(100);       
+        TableColumn tiempoCol= new TableColumn("Tiempo");
+        tiempoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Tiempo"));
+        tiempoCol.setMinWidth(100);       
+        TableColumn monedasCol = new TableColumn("Monedas");
+        monedasCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Monedas"));
+        monedasCol.setMinWidth(100);       
+        TableColumn fechaCol = new TableColumn("Fecha");
+        fechaCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Fecha"));
+        fechaCol.setMinWidth(100);       
+        TableColumn nivelCol = new TableColumn("Nivel");
+        nivelCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Nivel"));
+        nivelCol.setMinWidth(100);       
+        TableColumn estadoCol = new TableColumn("Gano");
+        estadoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Gano"));
+        estadoCol.setMinWidth(100);       
+        
+        Boton regreso= new Boton("Regresar","-fx-font: 20 century; -fx-background-color: transparent;-fx-background-radius: 30;", 150, 60, 580, 438, 10, Color.WHITESMOKE);
+
+        //Agregar al pane
+        windowHist.getChildren().addAll(titulo.getL(),regreso.getBtn());
+        windowHist.getChildren().addAll(player.getL(),time.getL(),coin.getL(),date.getL(),rank.getL(),siono.getL());
+        historial = new Scene(windowHist, 800, 550);
+//        windowPuntajes.getChildren().addAll(jugador.getL(),puntaje.getL(),name1.getL(),name2.getL(),name3.getL(),name4.getL(),name5.getL(),name6.getL(),name7.getL(),name8.getL(),name9.getL(), name10.getL());
+//        windowPuntajes.getChildren().addAll(puntaje1.getL(),puntaje2.getL(),puntaje3.getL(),puntaje4.getL(),puntaje5.getL(), puntaje6.getL(),puntaje7.getL(),puntaje8.getL(),puntaje9.getL(), puntaje10.getL());
+//        regreso.getBtn().setOnAction(new regresar());
+//        ver.getBtn().setOnAction(new verPuntaje());
+//        Scene scenePuntajes = new Scene(this.windowPuntajes, 890, 500);
+//        this.sc=this.stagePrincipal.getScene();
+//        this.stagePrincipal.setScene(scenePuntajes);
+
+        regreso.getBtn().setOnAction(e -> {
+            PaneOrganizer po = new PaneOrganizer(escenario);
+            po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(po.getInicio());
+        });
+
+    }
     
     public Historial(String jugado,String tiemp,String moneda,String fech,String nive,String estad){
         
@@ -104,92 +170,12 @@ public class Historial {
     public void setEstado(SimpleStringProperty estado) {
         this.estado = estado;
     }
-
-   
     
-
-
-    
-    
-    
-    
-    public Historial() {
-        
-        try{
-            imagen = new Image("fondohistorial.jpg");
-        
-        }
-        catch(Exception e){System.out.println("No lee imagen");}
-        vi=new ImageView(imagen);
-        vi.setFitHeight(600);
-        vi.setFitWidth(900);
-        vi.setImage (imagen);
-        
-        
-        
-        
-        windowHist=new Pane();
-        windowHist.getChildren().add(vi);
-
-        
-        
-        
-        TitulosLabel titulo= new TitulosLabel("HISTORIAL DE JUGADORES", "-fx-font: 20 elephant",450,10,100,20, Color.WHITESMOKE,true);
-        TitulosLabel player= new TitulosLabel("JUGADOR","-fx-font: 20 elephant",400,10,10,120, Color.WHITESMOKE,true);
-        TitulosLabel time= new TitulosLabel("TIEMPO", "-fx-font: 20 elephant;", 400, 10,150, 120, Color.WHITESMOKE,true);
-        TitulosLabel coin= new TitulosLabel("MONEDA", "-fx-font: 20 elephant;", 400, 10, 300,120, Color.WHITESMOKE,true);
-        TitulosLabel date= new TitulosLabel("FECHA ","-fx-font: 20 elephant",400,10,450,120, Color.WHITESMOKE,true);
-        TitulosLabel rank= new TitulosLabel("NIVEL ","-fx-font: 20 elephant",400,10,600,120, Color.WHITESMOKE,true);
-        TitulosLabel siono= new TitulosLabel("GANO ","-fx-font: 20 elephant",400,10,700,120, Color.WHITESMOKE,true);
-
-//        TitulosLabel 
-        table = new TableView<DatosJuego>();
-        
-
-        
-        
-        
-
-        //Se crea las columnas 
-        TableColumn jugadorCol = new TableColumn("Jugador");
-        jugadorCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Jugador"));
-        jugadorCol.setMinWidth(100);       
-        TableColumn tiempoCol= new TableColumn("Tiempo");
-        tiempoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Tiempo"));
-        tiempoCol.setMinWidth(100);       
-        TableColumn monedasCol = new TableColumn("Monedas");
-        monedasCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Monedas"));
-        monedasCol.setMinWidth(100);       
-        TableColumn fechaCol = new TableColumn("Fecha");
-        fechaCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Fecha"));
-        fechaCol.setMinWidth(100);       
-        TableColumn nivelCol = new TableColumn("Nivel");
-        nivelCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Nivel"));
-        nivelCol.setMinWidth(100);       
-        TableColumn estadoCol = new TableColumn("Gano");
-        estadoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Gano"));
-        estadoCol.setMinWidth(100);       
-
-        
-        Boton regreso= new Boton("Regresar","-fx-font: 20 century; -fx-background-color: transparent;-fx-background-radius: 30;", 150, 60, 580, 438, 10, Color.WHITESMOKE);
-
-        //Agregar al pane
-        windowHist.getChildren().addAll(titulo.getL(),regreso.getBtn());
-        windowHist.getChildren().addAll(player.getL(),time.getL(),coin.getL(),date.getL(),rank.getL(),siono.getL());
-//        windowPuntajes.getChildren().addAll(jugador.getL(),puntaje.getL(),name1.getL(),name2.getL(),name3.getL(),name4.getL(),name5.getL(),name6.getL(),name7.getL(),name8.getL(),name9.getL(), name10.getL());
-//        windowPuntajes.getChildren().addAll(puntaje1.getL(),puntaje2.getL(),puntaje3.getL(),puntaje4.getL(),puntaje5.getL(), puntaje6.getL(),puntaje7.getL(),puntaje8.getL(),puntaje9.getL(), puntaje10.getL());
-//        regreso.getBtn().setOnAction(new regresar());
-//        ver.getBtn().setOnAction(new verPuntaje());
-//        Scene scenePuntajes = new Scene(this.windowPuntajes, 890, 500);
-//        this.sc=this.stagePrincipal.getScene();
-//        this.stagePrincipal.setScene(scenePuntajes);
-
+    public Scene getHistorial() {
+        return historial;
     }
     
     public Pane getWindowHist() {
-       
-//      
-
         return windowHist;
     }
 
@@ -235,15 +221,5 @@ public class Historial {
        
     }
 
-private class regresar implements EventHandler<ActionEvent>{
-        @Override
-        public void handle(ActionEvent e){
-            
-        }
-    }
-	
+    
 }
-
-
-
-

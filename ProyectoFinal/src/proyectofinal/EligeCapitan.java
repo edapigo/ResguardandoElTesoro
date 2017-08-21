@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
@@ -33,7 +34,7 @@ public class EligeCapitan {
     private Scene elegirCapitan;
     private Pane root;
     private ImageView ive,iv,ivC;
-    private Image imagen,imagenElije,imagenCandado;
+    private Image imagen,imagenElige,imagenCandado;
     
     public EligeCapitan() {
         
@@ -52,9 +53,9 @@ public class EligeCapitan {
         root = new Pane();
         
         try{
-            imagenElije= new Image("fondoCapitan.jpg");
+            imagenElige= new Image("fondoCapitan.jpg");
         }catch(Exception e){System.out.println("No lee imagen ");}
-        ive = new ImageView(imagenElije);
+        ive = new ImageView(imagenElige);
         ive.setFitWidth(240);
         ive.setFitHeight(250);
         
@@ -62,7 +63,7 @@ public class EligeCapitan {
         try{
             imagenCandado= new Image("candado.png");
         }catch(Exception e){System.out.println("No lee imagen ");}
-        ivC = new ImageView(imagenElije);
+        ivC = new ImageView(imagenElige);
         ivC.setFitWidth(240);
         ivC.setFitHeight(250);
         
@@ -78,8 +79,7 @@ public class EligeCapitan {
         TitulosLabel nameSparrow = new TitulosLabel("Capitán Sparrow","-fx-font: 25 elephant",260,10,270,30, Color.GOLD,true);
         TitulosLabel nameBarbossa = new TitulosLabel("Capitán Barbossa","-fx-font: 25 elephant",275,10,270,30, Color.GOLD,true);
         TitulosLabel nameSalazar = new TitulosLabel("Capitán Salazar","-fx-font: 25 elephant",275,10,270,30, Color.GOLD,true);
-        
-        
+                
         
         bNombresCaptain.getChildren().addAll(nameSparrow.getL(), nameBarbossa.getL(), nameSalazar.getL());
         
@@ -93,8 +93,8 @@ public class EligeCapitan {
         toggleSparrow.setPrefSize(240,250);
         
 //      toggleSparrow.setBackground(new Background(new BackgroundImage(new Image( getClass().getResource("/testing/background.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-//      toggleSparrow.getStylesheets().add(this.getClass().getResource("fondoElije.jpg").toExternalForm());
-//      toggleSparrow.setGraphic(new ImageView ( new Image(getClass().getResourceAsStream("fondoElije.jpg"))));
+//      toggleSparrow.getStylesheets().add(this.getClass().getResource("fondoElige.jpg").toExternalForm());
+//      toggleSparrow.setGraphic(new ImageView ( new Image(getClass().getResourceAsStream("fondoElige.jpg"))));
         
         
         Barbossa capBarbossa = new Barbossa(0,0,0,"Barbossa.png",200,125,TipoArma.BOMBAS_FETIDAS);
@@ -124,13 +124,13 @@ public class EligeCapitan {
         bBotones.setSpacing(70);
         bBotones.setPadding(new Insets(40, 20, 40, 170));// top right bottom left
         
-        Boton btnAtras = new Boton("Atras","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnBack = new Boton("Atras","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
         Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
         
         btnNext.getBtn().setDisable(true);
         btnNext.getBtn().setOpacity(0.6);
              
-        bBotones.getChildren().addAll(btnNext.getBtn(),btnAtras.getBtn());
+        bBotones.getChildren().addAll(btnNext.getBtn(),btnBack.getBtn());
         
         content.getChildren().addAll(bNombresCaptain,bCaptain, bBotones);
         
@@ -152,19 +152,17 @@ public class EligeCapitan {
         });
         
         //Evento del Boton Siguiente
-        btnNext.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
-            }
+        btnNext.getBtn().setOnAction(e -> {
+            DatosJuego dj = new DatosJuego(escenario);
+            dj.getPartida().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(dj.getPartida());
         });
         
         //Evento del Boton Atras 
-        btnAtras.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
-            }
+        btnBack.getBtn().setOnAction(e -> {
+            IngresoDatos pd = new IngresoDatos(escenario);
+            pd.getPlayerData().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(pd.getPlayerData());
         });
         
     }
