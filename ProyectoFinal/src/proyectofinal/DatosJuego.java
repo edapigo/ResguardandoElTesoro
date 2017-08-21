@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * 
+ * Una clase para representar la pantalla de juego.
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
@@ -20,10 +20,10 @@ import javafx.stage.Stage;
 public class DatosJuego {
     
     private Scene partida;
-    private String tiempo;
-    private int monedas;
+    private String tiempo;//LABEL
+//    private int monedas; LABEL
     private String fecha;
-    private int nivel;
+    private int nivel;// LABEL
     private BorderPane root;
     private Image imagen;
     private ImageView iv;
@@ -34,7 +34,6 @@ public class DatosJuego {
     
     public DatosJuego(Stage escenario) {
         this.tiempo = "";
-        this.monedas = 0;
         this.fecha = "";
         this.nivel = 1;
         this.root = new BorderPane();
@@ -46,15 +45,14 @@ public class DatosJuego {
         iv = new ImageView(imagen);
         iv.setFitHeight(570);
         iv.setFitWidth(910);
-  
+        
         this.root.getChildren().add(iv);
         partida = new Scene(this.root, 800, 550);
         
     }    
     
-    public DatosJuego(Stage escenario, String tiempo, int monedas, String fecha, int nivel, BorderPane root) {
+    public DatosJuego(Stage escenario, String tiempo, String fecha, int nivel, BorderPane root) {
         this.tiempo = tiempo;
-        this.monedas = monedas;
         this.fecha = fecha;
         this.nivel = nivel;
         this.root = root;
@@ -72,14 +70,6 @@ public class DatosJuego {
         this.tiempo = tiempo;
     }
 
-    public int getMonedas() {
-        return monedas;
-    }
-    
-    public void setMonedas(int monedas) {
-        this.monedas = monedas;
-    }
-
     public String getFecha() {
         return fecha;
     }
@@ -89,7 +79,7 @@ public class DatosJuego {
     }
 
     public int getNivel() {
-        return nivel;
+         return nivel;
     }
     
     public void setNivel(int nivel) {

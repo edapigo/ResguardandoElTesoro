@@ -87,7 +87,7 @@ public class EligeCapitan {
         HBox bCaptain = new HBox();
         
         ToggleGroup groupCaptain = new ToggleGroup();
-        JackSparrow capSparrow = new JackSparrow(0,0,0,"Sparrow.png",200,100); 
+        JackSparrow capSparrow = new JackSparrow(0,0,0,"Sparrow.png",200,100,TipoArma.LLUVIA_DINAMITA); 
         ToggleButton toggleSparrow = new ToggleButton("",capSparrow.getImageCapitan());
         toggleSparrow.setToggleGroup(groupCaptain);
         toggleSparrow.setPrefSize(240,250);
@@ -97,7 +97,7 @@ public class EligeCapitan {
 //      toggleSparrow.setGraphic(new ImageView ( new Image(getClass().getResourceAsStream("fondoElije.jpg"))));
         
         
-        Barbossa capBarbossa = new Barbossa(0,0,0,"Barbossa.png",200,125);
+        Barbossa capBarbossa = new Barbossa(0,0,0,"Barbossa.png",200,125,TipoArma.BOMBAS_FETIDAS);
         ToggleButton toggleBarbossa = new ToggleButton("",capBarbossa.getImageCapitan());
         toggleBarbossa.setDisable(true);
         toggleBarbossa.setOpacity(0.6);
@@ -105,7 +105,7 @@ public class EligeCapitan {
         toggleBarbossa.setPrefSize(240, 250);
 //      toggleBarbossa.setCursor(Cursor.getSystemCustomCursor(new Image("cursor.png")));
         
-        Salazar capSalazar = new Salazar(0,0,0,"Salazar.png",200,130);
+        Salazar capSalazar = new Salazar(0,0,0,"Salazar.png",200,130,TipoArma.CAÑON_MUERTE);
         ToggleButton toggleSalazar = new ToggleButton("",capSalazar.getImageCapitan());
         toggleSalazar.setDisable(true);
         toggleBarbossa.setOpacity(0.6);
