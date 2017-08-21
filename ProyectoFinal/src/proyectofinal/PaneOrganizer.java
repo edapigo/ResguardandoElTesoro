@@ -5,27 +5,31 @@
  */
 package proyectofinal;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 /**
- *
+ * 
+ * @author Andres Ante
  * @author Edward Pino
+ * @author Juan Xavier Pita
  */
-public class PaneOrganize {
+public class PaneOrganizer {
+    private Scene inicio;
     private Pane root;
     private ImageView iv;
     private Image imagen;
     
-    public PaneOrganize(){
+    public PaneOrganizer() {
+        
+    }
+    
+    public PaneOrganizer(Stage escenario) {
         root = new Pane();
         try{
             imagen= new Image("juegof.jpg");
@@ -34,49 +38,41 @@ public class PaneOrganize {
         iv.setFitWidth(820);
         iv.setFitHeight(570);
         
-        TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO","-fx-font: 40 elephant",450,10,270,30, Color.FIREBRICK);
+        TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO","-fx-font: 40 elephant",450,10,270,30, Color.FIREBRICK, true);
         
         Boton btnNuevoJuego= new Boton("NUEVO JUEGO","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 80, 410, 10, Color.DARKSLATEBLUE);
         Boton btnHistorial= new Boton("HISTORIAL","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 300, 410, 10, Color.DARKSLATEBLUE);
         Boton btnSalir= new Boton("SALIR","-fx-font: 20 century; -fx-background-radius: 30;", 100, 60, 520, 410, 10, Color.DARKSLATEBLUE);
 
-//      Button btnNuevoJuego = new Button("Nuevo Juego");
-//      Button btnHistorial = new Button("Historial de jugadores");
-//      Button btnSalir = new Button("Salir");
-        
-        
-        
-        
-
         root.getChildren().addAll(iv);
         root.getChildren().addAll(titulo.getL(),btnNuevoJuego.getBtn(), btnHistorial.getBtn(), btnSalir.getBtn());
+        inicio = new Scene(root, 800, 550);
+                
         //Evento de Boton NuevoJuego
-        btnNuevoJuego.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            //
-            }
-        });
+        btnNuevoJuego.getBtn().setOnAction(e -> {
+            EligeCapitan ec = new EligeCapitan(escenario);
+            escenario.setScene(ec.getElegirCapitan());
+        });        
+        
         //Evento de Boton Historial
-        btnHistorial.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            //
-            }
-        });
+        btnHistorial.getBtn().setOnAction(e -> { });
         
         //Evento de Boton Salir
-        btnSalir.getBtn().setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
-        });
+        btnSalir.getBtn().setOnAction(e -> System.exit(0));
         
-         
         
-    }
-    
+    }   
     
     public Pane getRoot() {
         return root;
+    }
+    
+    public Scene getScene() {
+        return inicio;
+    }
+    
+    public void cambioEscena(Stage escenario, Scene escena, Button cambio) {
+        cambio.setOnAction(e -> escenario.setScene(escena));
     }
     
     

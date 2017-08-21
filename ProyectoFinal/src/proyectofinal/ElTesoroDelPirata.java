@@ -6,34 +6,28 @@
 package proyectofinal;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.ImageCursor;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
- *
+ * 
+ * @author Andres Ante
+ * @author Edward Pino
  * @author Juan Xavier Pita
  */
 public class ElTesoroDelPirata extends Application {
     
     @Override
-    public void start(Stage stage) {
-        PaneOrganize po= new PaneOrganize();
-        ElijeCapitan eC = new ElijeCapitan();
-        Scene scene = new Scene(eC.getRoot(),800, 550);
-        stage.setScene(scene);
-        stage.setTitle("Resguardando el tesoro");
-        scene.setCursor(new ImageCursor(new Image("cursor.png")));
+    public void start(Stage escenario) throws Exception {
         
-        stage.setResizable(false);
-        stage.show();
+        PaneOrganizer po = new PaneOrganizer(escenario);
+        
+        escenario.setScene(po.getScene());
+        escenario.setTitle("Resguardando el Tesoro del Pirata");
+        po.getScene().setCursor(new ImageCursor(new Image("cursor.png")));        
+        escenario.setResizable(false);
+        escenario.show();
     }
 
     /**
@@ -42,5 +36,6 @@ public class ElTesoroDelPirata extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
     
 }
