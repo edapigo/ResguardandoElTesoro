@@ -5,8 +5,13 @@
  */
 package proyectofinal;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -27,8 +32,8 @@ public class EligeCapitan {
     
     private Scene elegirCapitan;
     private Pane root;
-    private ImageView ive,iv;
-    private Image imagen,imagenElige;
+    private ImageView ive,iv,ivC;
+    private Image imagen,imagenElije,imagenCandado;
     
     public EligeCapitan() {
         
@@ -47,8 +52,19 @@ public class EligeCapitan {
         root = new Pane();
         
         try{
-            imagenElige= new Image("fondoCapitan.jpg");
+            imagenElije= new Image("fondoCapitan.jpg");
         }catch(Exception e){System.out.println("No lee imagen ");}
+        ive = new ImageView(imagenElije);
+        ive.setFitWidth(240);
+        ive.setFitHeight(250);
+        
+        
+        try{
+            imagenCandado= new Image("candado.png");
+        }catch(Exception e){System.out.println("No lee imagen ");}
+        ivC = new ImageView(imagenElije);
+        ivC.setFitWidth(240);
+        ivC.setFitHeight(250);
         
         
         VBox content = new VBox();
@@ -58,9 +74,10 @@ public class EligeCapitan {
         //Fila de nombres de Capitanes
         HBox bNombresCaptain = new HBox();
         bNombresCaptain.setPadding(new Insets(10, 20, 20, 30));
-        TitulosLabel nameSparrow = new TitulosLabel("Capitán Sparrow","-fx-font: 25 elephant",260,10,270,30, Color.GOLD, true);
-        TitulosLabel nameBarbossa = new TitulosLabel("Capitán Barbossa","-fx-font: 25 elephant",275,10,270,30, Color.GOLD, true);
-        TitulosLabel nameSalazar = new TitulosLabel("Capitán Salazar","-fx-font: 25 elephant",275,10,270,30, Color.GOLD, true);
+        // ancho alto posX posY
+        TitulosLabel nameSparrow = new TitulosLabel("Capitán Sparrow","-fx-font: 25 elephant",260,10,270,30, Color.GOLD,true);
+        TitulosLabel nameBarbossa = new TitulosLabel("Capitán Barbossa","-fx-font: 25 elephant",275,10,270,30, Color.GOLD,true);
+        TitulosLabel nameSalazar = new TitulosLabel("Capitán Salazar","-fx-font: 25 elephant",275,10,270,30, Color.GOLD,true);
         
         
         
@@ -75,17 +92,23 @@ public class EligeCapitan {
         toggleSparrow.setToggleGroup(groupCaptain);
         toggleSparrow.setPrefSize(240,250);
         
-        toggleSparrow.setStyle("-fx-background-image: url(\"imageElije.jpg\");");
+//      toggleSparrow.setBackground(new Background(new BackgroundImage(new Image( getClass().getResource("/testing/background.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+//      toggleSparrow.getStylesheets().add(this.getClass().getResource("fondoElije.jpg").toExternalForm());
+//      toggleSparrow.setGraphic(new ImageView ( new Image(getClass().getResourceAsStream("fondoElije.jpg"))));
         
         
         Barbossa capBarbossa = new Barbossa(0,0,0,"Barbossa.png",200,125);
         ToggleButton toggleBarbossa = new ToggleButton("",capBarbossa.getImageCapitan());
+        toggleBarbossa.setDisable(true);
+        toggleBarbossa.setOpacity(0.6);
         toggleBarbossa.setToggleGroup(groupCaptain);
         toggleBarbossa.setPrefSize(240, 250);
-        
+//      toggleBarbossa.setCursor(Cursor.getSystemCustomCursor(new Image("cursor.png")));
         
         Salazar capSalazar = new Salazar(0,0,0,"Salazar.png",200,130);
         ToggleButton toggleSalazar = new ToggleButton("",capSalazar.getImageCapitan());
+        toggleSalazar.setDisable(true);
+        toggleBarbossa.setOpacity(0.6);
         toggleSalazar.setToggleGroup(groupCaptain);
         toggleSalazar.setPrefSize(240, 250);
         Pane hi  = new Pane();
@@ -96,11 +119,54 @@ public class EligeCapitan {
         bCaptain.setPadding(new Insets(2, 10, 10, 20));
         ive = capSparrow.getImageCapitan();
         
+        //Fila Boton
+        HBox bBotones = new HBox();
+        bBotones.setSpacing(70);
+        bBotones.setPadding(new Insets(40, 20, 40, 170));// top right bottom left
         
-        content.getChildren().addAll(bNombresCaptain,bCaptain);
+        Boton btnAtras = new Boton("Atras","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        
+        btnNext.getBtn().setDisable(true);
+        btnNext.getBtn().setOpacity(0.6);
+             
+        bBotones.getChildren().addAll(btnNext.getBtn(),btnAtras.getBtn());
+        
+        content.getChildren().addAll(bNombresCaptain,bCaptain, bBotones);
         
         root.getChildren().addAll(iv,content);
         elegirCapitan = new Scene(root, 800, 550);
+       
+        groupCaptain.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (groupCaptain.getSelectedToggle() != null) {
+                    btnNext.getBtn().setDisable(false);
+                    btnNext.getBtn().setOpacity(1.0);
+                }
+                else{
+                    btnNext.getBtn().setDisable(true);
+                    btnNext.getBtn().setOpacity(0.6);
+                }
+            }
+        });
+        
+        //Evento del Boton Siguiente
+        btnNext.getBtn().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
+        //Evento del Boton Atras 
+        btnAtras.getBtn().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                
+            }
+        });
+        
     }
     
     public Pane getRoot() {

@@ -5,6 +5,8 @@
  */
 package proyectofinal;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -49,16 +51,24 @@ public class PaneOrganizer {
         inicio = new Scene(root, 800, 550);
                 
         //Evento de Boton NuevoJuego
-        btnNuevoJuego.getBtn().setOnAction(e -> {
-            EligeCapitan ec = new EligeCapitan(escenario);
-            escenario.setScene(ec.getElegirCapitan());
-        });        
-        
+        btnNuevoJuego.getBtn().setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+            //
+            }
+        });
         //Evento de Boton Historial
-        btnHistorial.getBtn().setOnAction(e -> { });
+        btnHistorial.getBtn().setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+            //
+            }
+        });
         
         //Evento de Boton Salir
-        btnSalir.getBtn().setOnAction(e -> System.exit(0));
+        btnSalir.getBtn().setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                System.exit(0);
+            }
+        });
         
         
     }   
