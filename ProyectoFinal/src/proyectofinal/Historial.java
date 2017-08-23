@@ -66,35 +66,27 @@ public class Historial {
         windowHist.getChildren().add(vi);
         
         TitulosLabel titulo= new TitulosLabel("HISTORIAL DE JUGADORES", "-fx-font: 20 elephant",450,10,100,20, Color.WHITESMOKE,true);
-        TitulosLabel player= new TitulosLabel("JUGADOR","-fx-font: 20 elephant",400,10,10,120, Color.WHITESMOKE,true);
-        TitulosLabel time= new TitulosLabel("TIEMPO", "-fx-font: 20 elephant;", 400, 10,150, 120, Color.WHITESMOKE,true);
-        TitulosLabel coin= new TitulosLabel("MONEDA", "-fx-font: 20 elephant;", 400, 10, 300,120, Color.WHITESMOKE,true);
-        TitulosLabel date= new TitulosLabel("FECHA ","-fx-font: 20 elephant",400,10,450,120, Color.WHITESMOKE,true);
-        TitulosLabel rank= new TitulosLabel("NIVEL ","-fx-font: 20 elephant",400,10,600,120, Color.WHITESMOKE,true);
-        TitulosLabel siono= new TitulosLabel("GANO ","-fx-font: 20 elephant",400,10,700,120, Color.WHITESMOKE,true);
+        TitulosLabel player= new TitulosLabel("JUGADOR","-fx-font: 20 elephant",400,10,10,85, Color.WHITESMOKE,true);
+        TitulosLabel time= new TitulosLabel("TIEMPO", "-fx-font: 20 elephant;", 400, 10,150, 85, Color.WHITESMOKE,true);
+        TitulosLabel coin= new TitulosLabel("MONEDA", "-fx-font: 20 elephant;", 400, 10, 300,85, Color.WHITESMOKE,true);
+        TitulosLabel date= new TitulosLabel("FECHA ","-fx-font: 20 elephant",400,10,450,85, Color.WHITESMOKE,true);
+        TitulosLabel rank= new TitulosLabel("NIVEL ","-fx-font: 20 elephant",400,10,600,85, Color.WHITESMOKE,true);
+        TitulosLabel siono= new TitulosLabel("GANO ","-fx-font: 20 elephant",400,10,700,85, Color.WHITESMOKE,true);
 
 //        TitulosLabel 
-        table = new TableView<DatosJuego>();
+
+
+
+        ArrayList<DatosHistorial>contenido=this.LeerDatos();
+//        System.out.println(contenido.get(0).getCoins());
+//Recorrer el array
         
-        //Se crea las columnas 
-        TableColumn jugadorCol = new TableColumn("Jugador");
-        jugadorCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Jugador"));
-        jugadorCol.setMinWidth(100);       
-        TableColumn tiempoCol= new TableColumn("Tiempo");
-        tiempoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Tiempo"));
-        tiempoCol.setMinWidth(100);       
-        TableColumn monedasCol = new TableColumn("Monedas");
-        monedasCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Monedas"));
-        monedasCol.setMinWidth(100);       
-        TableColumn fechaCol = new TableColumn("Fecha");
-        fechaCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Fecha"));
-        fechaCol.setMinWidth(100);       
-        TableColumn nivelCol = new TableColumn("Nivel");
-        nivelCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Nivel"));
-        nivelCol.setMinWidth(100);       
-        TableColumn estadoCol = new TableColumn("Gano");
-        estadoCol.setCellValueFactory(new PropertyValueFactory<Historial, String>("Gano"));
-        estadoCol.setMinWidth(100);       
+
+
+
+
+
+
         
         Boton regreso= new Boton("Regresar","-fx-font: 20 century; -fx-background-color: transparent;-fx-background-radius: 30;", 150, 60, 580, 438, 10, Color.WHITESMOKE);
 
@@ -102,14 +94,34 @@ public class Historial {
         windowHist.getChildren().addAll(titulo.getL(),regreso.getBtn());
         windowHist.getChildren().addAll(player.getL(),time.getL(),coin.getL(),date.getL(),rank.getL(),siono.getL());
         historial = new Scene(windowHist, 800, 550);
-//        windowPuntajes.getChildren().addAll(jugador.getL(),puntaje.getL(),name1.getL(),name2.getL(),name3.getL(),name4.getL(),name5.getL(),name6.getL(),name7.getL(),name8.getL(),name9.getL(), name10.getL());
-//        windowPuntajes.getChildren().addAll(puntaje1.getL(),puntaje2.getL(),puntaje3.getL(),puntaje4.getL(),puntaje5.getL(), puntaje6.getL(),puntaje7.getL(),puntaje8.getL(),puntaje9.getL(), puntaje10.getL());
-//        regreso.getBtn().setOnAction(new regresar());
-//        ver.getBtn().setOnAction(new verPuntaje());
-//        Scene scenePuntajes = new Scene(this.windowPuntajes, 890, 500);
-//        this.sc=this.stagePrincipal.getScene();
-//        this.stagePrincipal.setScene(scenePuntajes);
+        
+        int i=115;
+        for(int x=0;x<contenido.size();x++) {
+            TitulosLabel name1= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,10,i,Color.WHITESMOKE,false);
+            TitulosLabel name2= new TitulosLabel(" ","-fx-font: 15 elephant",400, 10,150, i,Color.WHITESMOKE,false);
+            TitulosLabel name3= new TitulosLabel(" ","-fx-font: 15 elephant",400, 10, 300,i,Color.BLACK,false);
+            TitulosLabel name4= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,450,i,Color.WHITESMOKE,false);
+            TitulosLabel name5= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,600,i,Color.WHITESMOKE,false);
+            TitulosLabel name6= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,700,i,Color.WHITESMOKE,false);
+            
+            name1.getL().setText(contenido.get(x).getPlayer());
+            name2.getL().setText(contenido.get(x).getTimer());
+            name3.getL().setText(contenido.get(x).getCoins());
+            name4.getL().setText(contenido.get(x).getDate());
+            name5.getL().setText(contenido.get(x).getNivel());
+            name6.getL().setText(contenido.get(x).getGano());
+            System.out.println(contenido.get(x));
+            
+            windowHist.getChildren().addAll(name1.getL(),name2.getL(),name3.getL(),name4.getL(),name5.getL(),name6.getL());
+            i+=30;
+            }
+        
+        
+        
 
+        
+        
+        //Accion del boton regresar a la anterior escena
         regreso.getBtn().setOnAction(e -> {
             PaneOrganizer po = new PaneOrganizer(escenario);
             po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));
@@ -118,56 +130,7 @@ public class Historial {
 
     }
     
-    public Historial(String jugado,String tiemp,String moneda,String fech,String nive,String estad){
-        
-        this.jugador=new SimpleStringProperty(jugado);
-        this.tiempo=new SimpleStringProperty(tiemp);
-        this.monedas=new SimpleStringProperty(moneda);
-        this.fecha=new SimpleStringProperty(fech);
-        this.nivel=new SimpleStringProperty(nive);
-        this.estado=new SimpleStringProperty(estad);
-        
-    }
-
-    public SimpleStringProperty getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(SimpleStringProperty jugador) {
-        this.jugador = jugador;
-    }
-
-    public SimpleStringProperty getMonedas() {
-        return monedas;
-    }
-
-    public void setMonedas(SimpleStringProperty monedas) {
-        this.monedas = monedas;
-    }
-
-    public SimpleStringProperty getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(SimpleStringProperty fecha) {
-        this.fecha = fecha;
-    }
-
-    public SimpleStringProperty getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(SimpleStringProperty nivel) {
-        this.nivel = nivel;
-    }
-
-    public SimpleStringProperty getEstado() {
-        return estado;
-    }
-
-    public void setEstado(SimpleStringProperty estado) {
-        this.estado = estado;
-    }
+    
     
     public Scene getHistorial() {
         return historial;
@@ -186,15 +149,65 @@ public class Historial {
         return file;
     }
     
-    public void MostrarDatos(){
-//        
-    }
+    	public static class DatosHistorial {
+		private final SimpleStringProperty player;
+		private final SimpleStringProperty timer;
+		private final SimpleStringProperty coins;
+		private final SimpleStringProperty date;
+		private final SimpleStringProperty nivel;
+		private final SimpleStringProperty gano;
+                
+                
+		private DatosHistorial(String first, String second, String tres, String cuatro,String cinco, String seis) {
+                    this.player = new SimpleStringProperty(first);
+                    this.timer = new SimpleStringProperty(second);
+                    this.coins = new SimpleStringProperty(tres);
+                    this.date = new SimpleStringProperty(cuatro);
+                    this.nivel = new SimpleStringProperty(cinco);
+                    this.gano=new SimpleStringProperty (seis);
+
+			
+                }
+			
+		
+
+        public String getPlayer() {
+            return player.get();
+        }
+
+        public String getTimer() {
+            return timer.get();
+        }
+
+        public String getCoins() {
+            return coins.get();
+        }
+
+        public String getDate() {
+            return date.get();
+        }
+
+        public String getNivel() {
+            return nivel.get();
+        }
+
+        public String getGano() {
+            return gano.get();
+        }
+
+		
+	
+        }
+        
+			
+
     
-    public ArrayList<Historial> LeerDatos(){
+    
+    public ArrayList<DatosHistorial> LeerDatos(){
         file = new File("historial.txt");
         FileReader fReader = null;
         BufferedReader bReader = null;
-        ArrayList<Historial> contenido= new ArrayList();
+        ArrayList<DatosHistorial> contenido= new ArrayList();
         String cont[];
         try{
             fReader= new FileReader(file);
@@ -203,8 +216,8 @@ public class Historial {
             while(linea != null){
                 cont=linea.split(",");
 //                data = FXCollections.observableArrayList(new Historial(Integer.toString(cont[0]),cont[1],cont[2],cont[3],cont[4],cont[5]));
+                contenido.add(new DatosHistorial(cont[0],cont[1],cont[2],cont[3],cont[4],cont[5]));
                 
-                contenido.add(new Historial(cont[0],cont[1],cont[2],cont[3],cont[4],cont[5]));
                 linea = bReader.readLine();
             }
             bReader.close();
@@ -214,10 +227,9 @@ public class Historial {
             System.out.println("No lee archivo");
         }catch(Exception e){
             System.out.println("ERROR");
-        }   
+        }
         return contenido;
        
     }
 
-    
 }
