@@ -115,26 +115,26 @@ public class EligeCapitan {
         
         
         bCaptain.getChildren().addAll(toggleSparrow,toggleBarbossa,toggleSalazar);
-        bCaptain.setSpacing(25);
-        bCaptain.setPadding(new Insets(2, 10, 10, 20));
+        bCaptain.setSpacing(20);
+        bCaptain.setPadding(new Insets(20, 10, 10, 20));
         ive = capSparrow.getImageCapitan();
         
         //Fila Boton
         HBox bBotones = new HBox();
         bBotones.setSpacing(70);
-        bBotones.setPadding(new Insets(40, 20, 40, 170));// top right bottom left
+        bBotones.setPadding(new Insets(40, 20, 40, 200));// top right bottom left
         
-        Boton btnBack = new Boton("Atras","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnBack = new Boton("Atras","-fx-font: 20 century; -fx-background-radius: 30;", 160, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 160, 50, 520, 410, 10, Color.DARKSLATEBLUE);
         
         btnNext.getBtn().setDisable(true);
         btnNext.getBtn().setOpacity(0.6);
              
-        bBotones.getChildren().addAll(btnNext.getBtn(),btnBack.getBtn());
+        bBotones.getChildren().addAll(btnNext.getBtn(), btnBack.getBtn());
         
-        content.getChildren().addAll(bNombresCaptain,bCaptain, bBotones);
+        content.getChildren().addAll(bNombresCaptain, bCaptain, bBotones);
         
-        root.getChildren().addAll(iv,content);
+        root.getChildren().addAll(iv, content);
         elegirCapitan = new Scene(root, 800, 550);
        
         groupCaptain.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
