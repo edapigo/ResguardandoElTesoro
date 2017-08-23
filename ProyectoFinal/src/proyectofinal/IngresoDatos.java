@@ -29,7 +29,11 @@ public class IngresoDatos {
     private Pane root;
     private Image imagen;
     private ImageView vi;
+    private Jugador player;
     
+    public IngresoDatos() {
+        
+    }
     
     public IngresoDatos(Stage escenario){
         root = new Pane();
@@ -81,12 +85,14 @@ public class IngresoDatos {
         });
         
         btnNext.getBtn().setOnAction(e -> {
-                EligeCapitan ec = new EligeCapitan(escenario);
+                player = new Jugador();
+                player.setNombre(fieldNombre.getText().trim());
+                EligeCapitan ec = new EligeCapitan(escenario, player);
                 ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
                 escenario.setScene(ec.getElegirCapitan());
-                Jugador user = new Jugador();
-                user.setNombre(fieldNombre.getText().trim());
-                System.out.println(user.getNombre());
+                
+                
+                System.out.println(player.getNombre());
         });       
         
         btnBack.getBtn().setOnAction(e -> {
@@ -106,6 +112,9 @@ public class IngresoDatos {
         return root;
     }    
     
+//    public Jugador getPlayer() {
+//        return player;
+//    }
     
 }
 

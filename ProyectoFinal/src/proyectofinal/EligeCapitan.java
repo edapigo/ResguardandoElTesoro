@@ -7,8 +7,6 @@ package proyectofinal;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
@@ -40,7 +38,7 @@ public class EligeCapitan {
         
     }    
     
-    public EligeCapitan(Stage escenario) {
+    public EligeCapitan(Stage escenario, Jugador player) {
         root = new Pane();
         
         try{
@@ -153,7 +151,8 @@ public class EligeCapitan {
         
         //Evento del Boton Siguiente
         btnNext.getBtn().setOnAction(e -> {
-            DatosJuego dj = new DatosJuego(escenario);
+            System.out.println(player.getNombre());
+            DatosJuego dj = new DatosJuego(escenario, player);
             dj.getPartida().setCursor(new ImageCursor(new Image("cursor.png")));
             escenario.setScene(dj.getPartida());
         });
