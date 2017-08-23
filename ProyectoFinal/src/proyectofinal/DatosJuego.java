@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import javafx.geometry.Insets;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -29,8 +31,8 @@ public class DatosJuego {
     private String fecha;
     private int nivel;// LABEL
     private BorderPane root;
-    private Image imagen,imagenFondo;
-    private ImageView iv,ivf;
+    private Image imagen, imagenFondo, imageMonedas;
+    private ImageView iv, ivf, ivm;
     
     public DatosJuego() {
         
@@ -44,43 +46,66 @@ public class DatosJuego {
         
         // CENTRO
         Pane centro = new Pane();
-         try{
+        try {
             imagen= new Image("fondoJuego.jpg");
-        }catch(Exception e){System.out.println("No lee imagen ");}
+        } catch(Exception e) {System.out.println("No lee imagen ");}
         iv = new ImageView(imagen);
-        iv.setFitHeight(490);
+        iv.setFitHeight(430);
         iv.setFitWidth(800);
         
         centro.getChildren().add(iv);
+               
+        // TOP
+        HBox top = new HBox();
+        top.setSpacing(20);
+        top.setPadding(new Insets(15, 0, 15, 0));    // top, right, bot, left
+        
+        Circle circulo = new Circle(10, Color.BLUE);
+        TitulosLabel nombreJugador = new TitulosLabel("Nombre ", "-fx-font: 15 elephant", 150, 0, 800, 0, Color.GOLD,false);
+        TitulosLabel nivel = new TitulosLabel("Nivel", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.valueOf("63371B"), false);
+        TitulosLabel monedas = new TitulosLabel("Monedas", "-fx-font: 15 elephant", 0, 0, 0, 0, Color.GOLD, false);
+        TitulosLabel tiempo = new TitulosLabel("Tiempo", "-fx-font: 15 elephant", 0, 0, 0, 0, Color.GOLD, false);
+
+        top.getChildren().addAll(circulo, nombreJugador.getL(), nivel.getL(), monedas.getL(), tiempo.getL());
+//        top.getChildren().addAll(elements)
+        
+        
         
         // BOTTOM
-        HBox botones = new HBox();
-        botones.setSpacing(20);
-        botones.setPadding(new Insets(0, 0, 0, 300));   // top, right, bottom, left
+        HBox bottom = new HBox();
+        bottom.setSpacing(20);
+        bottom.setPadding(new Insets(0, 0, 12, 500));   // top, right, bottom, left
         
-        Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnBack = new Boton("Atrás","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnPause = new Boton("Pausa","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnBack = new Boton("Atrás","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
         
-        botones.getChildren().addAll(btnNext.getBtn(), btnBack.getBtn());
+        bottom.getChildren().addAll(btnPause.getBtn(), btnBack.getBtn());
         
-       
-        // TOP
-        TitulosLabel nombreJugador = new TitulosLabel("Nombre: ","-fx-font: 25 elephant",275,10,270,30, Color.GOLD,false);
-        
-         try{
+        try{
             imagenFondo= new Image("fondo2.png");
         }catch(Exception e){System.out.println("No lee imagen ");}
         ivf= new ImageView(imagenFondo);
         ivf.setFitHeight(550);
         ivf.setFitWidth(800);
         
-        
-        
         root.getChildren().add(ivf);
         root.setCenter(centro);
-        root.setBottom(botones);
+        root.setTop(top);
+        root.setBottom(bottom);
+        
 //        root.getBottom().setStyle("-fx-background-color: #DAA520");
         partida = new Scene(root, 800, 550);
+        
+        btnPause.getBtn().setOnAction(e -> {
+            // BOTON PARA PAUSAR JUEGO (Usar Threads)
+        });
+        
+        btnBack.getBtn().setOnAction(e -> {
+            EligeCapitan ec = new EligeCapitan(escenario);
+            ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(ec.getElegirCapitan());
+        });
+        
         
     }    
     

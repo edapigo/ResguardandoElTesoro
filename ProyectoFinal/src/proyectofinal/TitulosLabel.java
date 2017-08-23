@@ -29,12 +29,12 @@ public class TitulosLabel {
         l.setTextFill(color);
         
         if(sombra) {
-           DropShadow ds = new DropShadow();
-        ds.setOffsetY(2.0f);
-        ds.setColor(Color.rgb(35, 42, 228, .99));
-        l.setCache(true);
-        l.setEffect(ds);
-        l.setFont(Font.font(null, FontWeight.EXTRA_BOLD,32));
+            DropShadow ds = new DropShadow();
+            ds.setOffsetY(2.0f);
+            ds.setColor(Color.rgb(35, 42, 228, .99));
+            l.setCache(true);
+            l.setEffect(ds);
+            l.setFont(Font.font(null, FontWeight.EXTRA_BOLD,32));
         }
         
     }

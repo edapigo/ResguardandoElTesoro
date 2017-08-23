@@ -16,11 +16,7 @@ public class JackSparrow extends Capitan{
 
     public JackSparrow(int alcance, int posicionY, int posicionX, String nombreImagen, int altura, int ancho, TipoArma tipoArma) {
         super(alcance, posicionY, posicionX, nombreImagen, altura, ancho, tipoArma);
-    }
-
-   
-
-   
+    }   
 
     @Override
     public void usarPoder() {

@@ -20,17 +20,16 @@ import javafx.scene.paint.Color;
 public class Boton {
     private Button btn;
     
-    public Boton(String nombre, String estilo, double ancho, double alto, double posX, double posY,double borde, Color color)
-    {
-       btn = new Button(nombre);
-       btn.setPrefSize(ancho, alto);
-       btn.setLayoutX(posX);
-       btn.setLayoutY(posY);
-       btn.setStyle(estilo);
-       btn.setOpacity(borde);
-       btn.setTextFill(color);
-       btn.addEventHandler(MouseEvent.MOUSE_MOVED, new MouseHandlerMove());
-       btn.addEventHandler(MouseEvent.MOUSE_EXITED, new MouseHandlerExited());
+    public Boton(String nombre, String estilo, double ancho, double alto, double posX, double posY,double borde, Color color) {
+        btn = new Button(nombre);
+        btn.setPrefSize(ancho, alto);
+        btn.setLayoutX(posX);
+        btn.setLayoutY(posY);
+        btn.setStyle(estilo);
+        btn.setOpacity(borde);
+        btn.setTextFill(color);
+        btn.addEventHandler(MouseEvent.MOUSE_MOVED, new MouseHandlerMove());
+        btn.addEventHandler(MouseEvent.MOUSE_EXITED, new MouseHandlerExited());
     
     }
 

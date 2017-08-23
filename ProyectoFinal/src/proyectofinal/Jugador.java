@@ -17,6 +17,7 @@ public class Jugador {
     private Dificultad dificultad;
 
     public Jugador() {
+        
     }
 
     public Jugador(String nombre, int monedas, Dificultad dificultad) {

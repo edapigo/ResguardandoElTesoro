@@ -43,9 +43,9 @@ public class PaneOrganizer {
         
         TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO","-fx-font: 40 elephant",450,10,270,30, Color.FIREBRICK, true);
         
-        Boton btnJugar= new Boton("JUGAR","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 80, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnHistorial= new Boton("HISTORIAL","-fx-font: 20 century; -fx-background-radius: 30;", 200, 60, 300, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnSalir= new Boton("SALIR","-fx-font: 20 century; -fx-background-radius: 30;", 100, 60, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnJugar= new Boton("JUGAR","-fx-font: 20 century; -fx-background-radius: 30;", 185, 55, 95, 380, 10, Color.DARKSLATEBLUE);
+        Boton btnHistorial= new Boton("HISTORIAL","-fx-font: 20 century; -fx-background-radius: 30;", 185, 55, 315, 380, 10, Color.DARKSLATEBLUE);
+        Boton btnSalir= new Boton("SALIR","-fx-font: 20 century; -fx-background-radius: 30;", 185, 55, 535, 380, 10, Color.DARKSLATEBLUE);
 
         root.getChildren().addAll(iv);
         root.getChildren().addAll(titulo.getL(),btnJugar.getBtn(), btnHistorial.getBtn(), btnSalir.getBtn());
