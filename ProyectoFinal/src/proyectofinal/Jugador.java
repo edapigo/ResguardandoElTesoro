@@ -12,7 +12,7 @@ package proyectofinal;
  * @author Juan Xavier Pita
  */
 public class Jugador {
-    private String nombre;
+    private static String nombre;
     private int monedas;
     private Dificultad dificultad;
 

@@ -24,13 +24,6 @@ public class ElTesoroDelPirata extends Application {
         PaneOrganizer po = new PaneOrganizer(escenario);
         
         escenario.setScene(po.getInicio());
-
-
-//        // PRUEBA DatosJuego
-//        DatosJuego dj = new DatosJuego(escenario);
-//        escenario.setScene(dj.getPartida());
-//        dj.getPartida().setCursor(new ImageCursor(new Image("cursor.png")));
-//        // fin
         
         escenario.setTitle("Resguardando el Tesoro del Pirata");
         po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));        
