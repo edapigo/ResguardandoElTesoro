@@ -53,7 +53,9 @@ public class DatosJuego {
         iv.setFitHeight(430);
         iv.setFitWidth(800);
         
-        centro.getChildren().add(iv);
+        JackSparrow j = new JackSparrow(2,50,50,"captainSparrow.png" ,80,60,TipoArma.LLUVIA_DINAMITA,escenario.getScene());// validad bien esto
+        
+        centro.getChildren().addAll(iv, j.getImageCapitan());
                
         // TOP
         HBox top = new HBox();

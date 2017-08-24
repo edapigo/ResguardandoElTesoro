@@ -5,6 +5,8 @@
  */
 package proyectofinal;
 
+import javafx.scene.Scene;
+
 
 /**
  * 
@@ -14,8 +16,8 @@ package proyectofinal;
  */
 public class Barbossa extends Capitan {
 
-    public Barbossa(int alcance, int posicionY, int posicionX, String nombreImagen, int altura, int ancho, TipoArma tipoArma) {
-        super(alcance, posicionY, posicionX, nombreImagen, altura, ancho, tipoArma);
+    public Barbossa(int alcance, int posicionY, int posicionX, String nombreImagen, int altura, int ancho, TipoArma tipoArma, Scene escenaActual) {
+        super(alcance, posicionY, posicionX, nombreImagen, altura, ancho, tipoArma, escenaActual);
     }
 
    
