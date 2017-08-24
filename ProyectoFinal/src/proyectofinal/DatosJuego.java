@@ -50,10 +50,10 @@ public class DatosJuego {
             imagen= new Image("fondoJuego.jpg");
         } catch(Exception e) {System.out.println("No lee imagen ");}
         iv = new ImageView(imagen);
-        iv.setFitHeight(430);
-        iv.setFitWidth(800);
+        iv.setFitHeight(630);
+        iv.setFitWidth(1000);
         
-        JackSparrow j = new JackSparrow(2,50,50,"captainSparrow.png" ,80,60,TipoArma.LLUVIA_DINAMITA,escenario.getScene());// validad bien esto
+        JackSparrow j = new JackSparrow(2,50,50,"captainSparrow.png" ,150,120,TipoArma.LLUVIA_DINAMITA,escenario.getScene());// validad bien esto
         
         centro.getChildren().addAll(iv, j.getImageCapitan());
                
@@ -94,7 +94,7 @@ public class DatosJuego {
         // BOTTOM
         HBox bottom = new HBox();
         bottom.setSpacing(20);
-        bottom.setPadding(new Insets(0, 0, 12, 500));   // top, right, bottom, left
+        bottom.setPadding(new Insets(0, 0, 12, 700));   // top, right, bottom, left
         
         Boton btnPause = new Boton("Pausa","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
         Boton btnBack = new Boton("Atrás","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
@@ -105,8 +105,8 @@ public class DatosJuego {
             imagenFondo= new Image("fondo2.png");
         }catch(Exception e){System.out.println("No lee imagen ");}
         ivf= new ImageView(imagenFondo);
-        ivf.setFitHeight(550);
-        ivf.setFitWidth(800);
+        ivf.setFitHeight(750);
+        ivf.setFitWidth(1000);
         
         root.getChildren().add(ivf);
         root.setCenter(centro);
@@ -114,7 +114,7 @@ public class DatosJuego {
         root.setBottom(bottom);
         
 //        root.getBottom().setStyle("-fx-background-color: #DAA520");
-        partida = new Scene(root, 800, 550);
+        partida = new Scene(root, 1000, 750);
         
         btnPause.getBtn().setOnAction(e -> {
             // BOTON PARA PAUSAR JUEGO (Usar Threads)

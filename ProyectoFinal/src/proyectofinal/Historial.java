@@ -99,7 +99,7 @@ public class Historial {
         for(int x=0;x<contenido.size();x++) {
             TitulosLabel name1= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,10,i,Color.WHITESMOKE,false);
             TitulosLabel name2= new TitulosLabel(" ","-fx-font: 15 elephant",400, 10,150, i,Color.WHITESMOKE,false);
-            TitulosLabel name3= new TitulosLabel(" ","-fx-font: 15 elephant",400, 10, 300,i,Color.BLACK,false);
+            TitulosLabel name3= new TitulosLabel(" ","-fx-font: 15 elephant",400, 10, 300,i,Color.WHITESMOKE,false);
             TitulosLabel name4= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,450,i,Color.WHITESMOKE,false);
             TitulosLabel name5= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,600,i,Color.WHITESMOKE,false);
             TitulosLabel name6= new TitulosLabel(" ","-fx-font: 15 elephant",400,10,700,i,Color.WHITESMOKE,false);
