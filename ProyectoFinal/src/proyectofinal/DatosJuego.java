@@ -41,7 +41,6 @@ public class DatosJuego {
     public DatosJuego(Stage escenario, Jugador player) {
         this.tiempo = "";
         this.fecha = "";
-        this.nivel = 1;
         this.root = new BorderPane();
         
         // CENTRO
@@ -50,7 +49,7 @@ public class DatosJuego {
             imagen= new Image("fondoJuego.jpg");
         } catch(Exception e) {System.out.println("No lee imagen ");}
         iv = new ImageView(imagen);
-        iv.setFitHeight(630);
+        iv.setFitHeight(632);
         iv.setFitWidth(1000);
         
         JackSparrow j = new JackSparrow(2,50,50,"captainSparrow.png" ,150,120,TipoArma.LLUVIA_DINAMITA,escenario.getScene());// validad bien esto
@@ -61,24 +60,24 @@ public class DatosJuego {
         HBox top = new HBox();
         top.setSpacing(30);
         top.setPadding(new Insets(15, 0, 15, 10));    // top, right, bot, left        
-        Circle circulo = new Circle(10, Color.BLUE);
+        Circle circulo = new Circle(10, Color.GREY);
         // NOMBRE-USUARIO
         HBox boxNombre = new HBox();
         boxNombre.setSpacing(-20);
-        TitulosLabel tagNombre = new TitulosLabel("Nombre ", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.GOLD, false);
+        TitulosLabel tagNombre = new TitulosLabel("Nombre", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.GOLD, false);
         TitulosLabel labNombre = new TitulosLabel(player.getNombre(), "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
         boxNombre.getChildren().addAll(tagNombre.getL(), labNombre.getL());
         // NIVEL-NUMERO
         HBox boxNivel = new HBox();
         boxNivel.setSpacing(-15);
         TitulosLabel tagNivel = new TitulosLabel("Nivel", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.GOLD, false);
-        TitulosLabel labNivel = new TitulosLabel(nivel+"", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
+        TitulosLabel labNivel = new TitulosLabel(player.getDificultad().getNivel() + "", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
         boxNivel.getChildren().addAll(tagNivel.getL(), labNivel.getL());
         // MONEDAS-CANTIDAD
         HBox boxMonedas = new HBox();
         boxMonedas.setSpacing(-15);
         TitulosLabel tagMonedas = new TitulosLabel("Monedas", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.GOLD, false);
-        TitulosLabel labMonedas = new TitulosLabel("0", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
+        TitulosLabel labMonedas = new TitulosLabel(player.getMonedas() + "", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
         boxMonedas.getChildren().addAll(tagMonedas.getL(), labMonedas.getL());
         // TIEMPO-RELOJ (hh:mm:ss)
         HBox boxTiempo = new HBox();
@@ -86,7 +85,7 @@ public class DatosJuego {
         TitulosLabel tagTiempo = new TitulosLabel("Tiempo", "-fx-font: 15 elephant", 150, 0, 0, 0, Color.GOLD, false);
         TitulosLabel labTiempo = new TitulosLabel(tiempo, "-fx-font: 15 elephant", 150, 0, 0, 0, Color.DARKSLATEGRAY, false);
         boxTiempo.getChildren().addAll(tagTiempo.getL(), labTiempo.getL());
-        
+
         top.getChildren().addAll(circulo, boxNombre, boxNivel, boxMonedas, boxTiempo);
         
         
@@ -129,10 +128,9 @@ public class DatosJuego {
         
     }    
     
-    public DatosJuego(String tiempo, String fecha, int nivel, BorderPane root) {
+    public DatosJuego(String tiempo, String fecha, BorderPane root) {
         this.tiempo = tiempo;
         this.fecha = fecha;
-        this.nivel = nivel;
         this.root = root;
     }
     

@@ -151,7 +151,6 @@ public class EligeCapitan {
         
         //Evento del Boton Siguiente
         btnNext.getBtn().setOnAction(e -> {
-            System.out.println(player.getNombre());
             DatosJuego dj = new DatosJuego(escenario, player);
             dj.getPartida().setCursor(new ImageCursor(new Image("cursor.png")));
             escenario.setScene(dj.getPartida());

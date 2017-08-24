@@ -85,14 +85,10 @@ public class IngresoDatos {
         });
         
         btnNext.getBtn().setOnAction(e -> {
-                player = new Jugador();
-                player.setNombre(fieldNombre.getText().trim());
+                player = new Jugador(fieldNombre.getText().trim().toLowerCase(), 0, Dificultad.BASICO); 
                 EligeCapitan ec = new EligeCapitan(escenario, player);
                 ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
                 escenario.setScene(ec.getElegirCapitan());
-                
-                
-                System.out.println(player.getNombre());
         });       
         
         btnBack.getBtn().setOnAction(e -> {
