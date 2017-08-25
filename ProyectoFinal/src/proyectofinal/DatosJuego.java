@@ -5,6 +5,8 @@
  */
 package proyectofinal;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import javafx.geometry.Insets;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
@@ -29,6 +31,7 @@ public class DatosJuego {
     private Scene partida;
     private String tiempo;
     private String fecha;
+    private Queue<Pirata> piratas = new LinkedList<>();
     private BorderPane root;
     private Image imagen, imagenFondo;
     private ImageView iv, ivf;
@@ -55,9 +58,10 @@ public class DatosJuego {
         iv.setFitHeight(632);
         iv.setFitWidth(1000);
 
-        JackSparrow j = new JackSparrow(50, 50, "captainSparrow.png", 120, 90, TipoArma.LLUVIA_DINAMITA, partida);// validad bien esto
-
-        centro.getChildren().addAll(iv, j.getImageCapitan());
+        JackSparrow jack = new JackSparrow(50, 50, "captainSparrow.png", 120, 90, TipoArma.LLUVIA_DINAMITA, partida);// validad bien esto
+        GenerarPiratas enemigos = new GenerarPiratas(centro, piratas, false);
+        
+        centro.getChildren().addAll(iv, jack.getImageCapitan());
 
         // TOP
         HBox top = new HBox();
