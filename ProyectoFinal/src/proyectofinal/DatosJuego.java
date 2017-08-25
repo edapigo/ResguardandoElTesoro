@@ -41,6 +41,8 @@ public class DatosJuego {
         this.tiempo = "";
         this.fecha = "";
         this.root = new BorderPane();
+        
+        partida = new Scene(root, 1000, 750);
 
         // CENTRO
         Pane centro = new Pane();
@@ -53,8 +55,9 @@ public class DatosJuego {
         iv.setFitHeight(632);
         iv.setFitWidth(1000);
 
-        JackSparrow j = new JackSparrow(50, 50, "captainSparrow.png", 150, 120, TipoArma.LLUVIA_DINAMITA, escenario.getScene());// validad bien esto
+         JackSparrow j = new JackSparrow(50,50,"captainSparrow.png" ,150,120,TipoArma.LLUVIA_DINAMITA,partida);// validad bien esto
 
+        
         centro.getChildren().addAll(iv, j.getImageCapitan());
 
         // TOP
@@ -114,7 +117,7 @@ public class DatosJuego {
         root.setBottom(bottom);
 
 //        root.getBottom().setStyle("-fx-background-color: #DAA520");
-        partida = new Scene(root, 1000, 750);
+        
 
         btnPause.getBtn().setOnAction(e -> {
             // BOTON PARA PAUSAR JUEGO (Usar Threads)
