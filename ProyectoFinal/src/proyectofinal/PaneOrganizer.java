@@ -42,7 +42,8 @@ public class PaneOrganizer {
         iv.setFitWidth(820);
         iv.setFitHeight(570);
 
-        TitulosLabel titulo = new TitulosLabel("RESGUARDANDO EL TESORO", "-fx-font: 40 elephant", 450, 10, 270, 30, Color.FIREBRICK, true);
+        TitulosLabel titulo = new TitulosLabel("RESGUARDANDO","-fx-font: 40 elephant",450,10,200,30, Color.ORANGERED, true);
+        TitulosLabel titulo1 = new TitulosLabel("EL TESORO","-fx-font: 40 elephant",450,10,250,80, Color.ORANGERED, true);
 
         Boton btnJugar = new Boton("JUGAR", "-fx-font: 20 century; -fx-background-radius: 30;", 185, 55, 95, 380, 10, Color.DARKSLATEBLUE);
         Boton btnHistorial = new Boton("HISTORIAL", "-fx-font: 20 century; -fx-background-radius: 30;", 185, 55, 315, 380, 10, Color.DARKSLATEBLUE);
