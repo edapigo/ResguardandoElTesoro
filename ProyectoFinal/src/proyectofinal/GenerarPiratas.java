@@ -32,7 +32,6 @@ public class GenerarPiratas extends Thread {
         this.piratasAlmacenados = piratas;
         this.piratasEnJuego = new ArrayList<>();
         this.finPartida = finPartida;
-
     }
 
     @Override
@@ -51,7 +50,7 @@ public class GenerarPiratas extends Thread {
                     if (piratasEnJuego.isEmpty()) {
                         piratasEnJuego.add(piratasAlmacenados.poll());
 
-                        for (int i = 0; i < (piratasEnJuego.size()); i ++) {
+                        for (int i = 0; i < (piratasEnJuego.size()); i++) {
                             piratasEnJuego.get(i).adjuntarPirata(pane);
                             piratasEnJuego.get(i).start();
                         }

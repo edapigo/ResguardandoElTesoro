@@ -33,6 +33,7 @@ public class EligeCapitan {
     private Pane root;
     private ImageView ive, iv, ivC;
     private Image imagen, imagenElige, imagenCandado;
+    private String personaje;
 
     public EligeCapitan() {
 
@@ -88,23 +89,19 @@ public class EligeCapitan {
 
         ToggleGroup groupCaptain = new ToggleGroup();
         JackSparrow capSparrow = new JackSparrow(0, 0, "Sparrow.png", 200, 100, TipoArma.LLUVIA_DINAMITA, escenario.getScene());
-        ToggleButton toggleSparrow = new ToggleButton("", capSparrow.getImageCapitan());
+        ToggleButton toggleSparrow = new ToggleButton("Sparrow", capSparrow.getImageCapitan());
         toggleSparrow.setToggleGroup(groupCaptain);
         toggleSparrow.setPrefSize(240, 250);
 
-//      toggleSparrow.setBackground(new Background(new BackgroundImage(new Image( getClass().getResource("/testing/background.jpg").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-//      toggleSparrow.getStylesheets().add(this.getClass().getResource("fondoElige.jpg").toExternalForm());
-//      toggleSparrow.setGraphic(new ImageView ( new Image(getClass().getResourceAsStream("fondoElige.jpg"))));
         Barbossa capBarbossa = new Barbossa(0, 0, "Barbossa.png", 200, 125, TipoArma.BOMBAS_FETIDAS, escenario.getScene());
-        ToggleButton toggleBarbossa = new ToggleButton("", capBarbossa.getImageCapitan());
+        ToggleButton toggleBarbossa = new ToggleButton("Barbossa", capBarbossa.getImageCapitan());
         toggleBarbossa.setDisable(true);
         toggleBarbossa.setOpacity(0.6);
         toggleBarbossa.setToggleGroup(groupCaptain);
         toggleBarbossa.setPrefSize(240, 250);
-//      toggleBarbossa.setCursor(Cursor.getSystemCustomCursor(new Image("cursor.png")));
 
         Salazar capSalazar = new Salazar(0, 0, "Salazar.png", 200, 130, TipoArma.CAÑON_MUERTE, escenario.getScene());
-        ToggleButton toggleSalazar = new ToggleButton("", capSalazar.getImageCapitan());
+        ToggleButton toggleSalazar = new ToggleButton("Salazar", capSalazar.getImageCapitan());
         toggleSalazar.setDisable(true);
         toggleBarbossa.setOpacity(0.6);
         toggleSalazar.setToggleGroup(groupCaptain);
@@ -149,7 +146,23 @@ public class EligeCapitan {
 
         //Evento del Boton Siguiente
         btnNext.getBtn().setOnAction(e -> {
-            DatosJuego dj = new DatosJuego(escenario, player);
+            ToggleButton cap = (ToggleButton) groupCaptain.getSelectedToggle();
+
+            switch (cap.getText()) {
+                case "Sparrow":
+                    this.personaje = "Sparrow.png";
+                    break;
+                case "Barbossa":
+                    this.personaje = "Barbossa.png";
+                    break;
+                case "Salazar":
+                    this.personaje = "Salazar.png";
+                    break;
+                default:
+                    System.out.println("No se seleccionó bien el capitan");
+            }
+
+            DatosJuego dj = new DatosJuego(escenario, player, this.personaje);
             dj.getPartida().setCursor(new ImageCursor(new Image("cursor.png")));
             escenario.setScene(dj.getPartida());
         });
@@ -169,6 +182,10 @@ public class EligeCapitan {
 
     public Scene getElegirCapitan() {
         return elegirCapitan;
+    }
+
+    public String getPersonaje() {
+        return personaje;
     }
 
 }

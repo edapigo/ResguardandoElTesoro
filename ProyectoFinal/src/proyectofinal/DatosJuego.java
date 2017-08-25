@@ -40,7 +40,7 @@ public class DatosJuego {
 
     }
 
-    public DatosJuego(Stage escenario, Jugador player) {
+    public DatosJuego(Stage escenario, Jugador player, String nombreCapitan) {
         this.tiempo = "";
         this.fecha = "";
         this.root = new BorderPane();
@@ -58,10 +58,24 @@ public class DatosJuego {
         iv.setFitHeight(632);
         iv.setFitWidth(1000);
 
-        JackSparrow jack = new JackSparrow(50, 50, "captainSparrow.png", 120, 90, TipoArma.LLUVIA_DINAMITA, partida);// validad bien esto
+        switch (nombreCapitan) {
+            case "Sparrow.png":
+                JackSparrow jack = new JackSparrow(50, 50, "captainSparrow.png", 120, 90, TipoArma.LLUVIA_DINAMITA, partida);
+                centro.getChildren().addAll(iv, jack.getImageCapitan());
+                break;
+            case "Barbossa.png":
+                Barbossa barbossa = new Barbossa(50, 50, "Barbossa.png", 120, 90, TipoArma.BOMBAS_FETIDAS, partida);
+                centro.getChildren().addAll(iv, barbossa.getImageCapitan());
+                break;
+            case "Salazar.png":
+                Salazar salazar = new Salazar(50, 50, "Salazar.png", 120, 90, TipoArma.CAÑON_MUERTE, partida);
+                centro.getChildren().addAll(iv, salazar.getImageCapitan());
+                break;
+            default:
+                System.out.println("Error al ubicar su capitan");
+        }
+
         GenerarPiratas enemigos = new GenerarPiratas(centro, piratas, false);
-        
-        centro.getChildren().addAll(iv, jack.getImageCapitan());
 
         // TOP
         HBox top = new HBox();
