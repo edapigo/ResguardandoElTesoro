@@ -7,24 +7,21 @@ package proyectofinal;
 
 import javafx.scene.Scene;
 
-
 /**
- * 
+ *
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
  */
-public class JackSparrow extends Capitan{
+public class JackSparrow extends Capitan {
 
-    public JackSparrow(int alcance, int posicionY, int posicionX, String nombreImagen, int altura, int ancho, TipoArma tipoArma, Scene escenaActual) {
-        super(alcance, posicionY, posicionX, nombreImagen, altura, ancho, tipoArma, escenaActual);
+    public JackSparrow(int posicionY, int posicionX, String nombreImagen, int altura, int ancho, TipoArma tipoArma, Scene escenaActual) {
+        super(posicionY, posicionX, nombreImagen, altura, ancho, tipoArma, escenaActual);
     }
-    
+
     @Override
     public void usarPoder() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
 }

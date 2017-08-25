@@ -19,63 +19,64 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * 
+ *
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
  */
 public class IngresoDatos {
+
     private Scene playerData;
     private Pane root;
     private Image imagen;
     private ImageView vi;
     private Jugador player;
-    
+
     public IngresoDatos() {
-        
+
     }
-    
-    public IngresoDatos(Stage escenario){
+
+    public IngresoDatos(Stage escenario) {
         root = new Pane();
-        try{
-            imagen= new Image("fondoIngreso.jpg");
-        
+        try {
+            imagen = new Image("fondoIngreso.jpg");
+
+        } catch (Exception e) {
+            System.out.println("No lee imagen");
         }
-        catch(Exception e){System.out.println("No lee imagen");}        
-       
-        vi=new ImageView(imagen);
+
+        vi = new ImageView(imagen);
         vi.setFitHeight(550);
         vi.setFitWidth(820);
-        vi.setImage (imagen);
-        
-        VBox principal = new VBox(); 
+        vi.setImage(imagen);
+
+        VBox principal = new VBox();
         // PRIMERA FILA
         HBox box = new HBox();
         box.setSpacing(20);
         box.setPadding(new Insets(220, 100, 70, 200));// top right bottom left        
-        TitulosLabel nombre = new TitulosLabel("Ingrese el nombre: ","-fx-font: 25 elephant",250,10,270,30, Color.DARKCYAN,false);
-        TextField fieldNombre = new TextField();   
-        
-        box.getChildren().addAll(nombre.getL(),fieldNombre);
-        
+        TitulosLabel nombre = new TitulosLabel("Ingrese el nombre: ", "-fx-font: 25 elephant", 250, 10, 270, 30, Color.DARKCYAN, false);
+        TextField fieldNombre = new TextField();
+
+        box.getChildren().addAll(nombre.getL(), fieldNombre);
+
         // SEGUNDA FILA
         HBox botones = new HBox();
         botones.setSpacing(20);
         botones.setPadding(new Insets(-30, 0, 0, 310));   // top, right, bot, left        
-        Boton btnNext = new Boton("Siguiente","-fx-font: 20 century; -fx-background-radius: 30;", 165, 50, 520, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnBack = new Boton("Atrás","-fx-font: 20 century; -fx-background-radius: 30;", 165, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnNext = new Boton("Siguiente", "-fx-font: 20 century; -fx-background-radius: 30;", 165, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnBack = new Boton("Atrás", "-fx-font: 20 century; -fx-background-radius: 30;", 165, 50, 520, 410, 10, Color.DARKSLATEBLUE);
         btnNext.getBtn().setDisable(true);
         btnNext.getBtn().setOpacity(0.5);
-        
+
         botones.getChildren().addAll(btnNext.getBtn(), btnBack.getBtn());
-        
+
         principal.getChildren().addAll(box, botones);
         root.getChildren().addAll(vi, principal);
-        playerData = new Scene(root, 800, 550);        
-        
-        
+        playerData = new Scene(root, 800, 550);
+
         fieldNombre.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if(newValue.trim().isEmpty()) {
+            if (newValue.trim().isEmpty()) {
                 btnNext.getBtn().setDisable(true);
                 btnNext.getBtn().setOpacity(0.5);
             } else {
@@ -83,34 +84,31 @@ public class IngresoDatos {
                 btnNext.getBtn().setOpacity(1.0);
             }
         });
-        
+
         btnNext.getBtn().setOnAction(e -> {
-                player = new Jugador(fieldNombre.getText().trim().toLowerCase(), 0, Dificultad.BASICO); 
-                EligeCapitan ec = new EligeCapitan(escenario, player);
-                ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
-                escenario.setScene(ec.getElegirCapitan());
-        });       
-        
+            player = new Jugador(fieldNombre.getText().trim().toLowerCase(), 0, Dificultad.BASICO);
+            EligeCapitan ec = new EligeCapitan(escenario, player);
+            ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
+            escenario.setScene(ec.getElegirCapitan());
+        });
+
         btnBack.getBtn().setOnAction(e -> {
             PaneOrganizer po = new PaneOrganizer(escenario);
             po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));
             escenario.setScene(po.getInicio());
         });
-        
-        
+
     }
-    
+
     public Scene getPlayerData() {
         return playerData;
     }
 
     public Pane getRoot() {
         return root;
-    }    
-    
+    }
+
 //    public Jugador getPlayer() {
 //        return player;
 //    }
-    
 }
-

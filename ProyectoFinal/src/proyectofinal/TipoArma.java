@@ -12,8 +12,8 @@ package proyectofinal;
  * @author Juan Xavier Pita
  */
 public enum TipoArma {
-    
-    LLUVIA_DINAMITA(2),BOMBAS_FETIDAS(4),CAÑON_MUERTE(6);
+
+    LLUVIA_DINAMITA(2), BOMBAS_FETIDAS(4), CAÑON_MUERTE(6);
     private int alcance;
 
     private TipoArma(int alcance) {

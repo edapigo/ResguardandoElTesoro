@@ -12,15 +12,17 @@ import javafx.scene.paint.Color;
 
 /**
  * Una clase para representar a los botones del juego.
+ *
  * @version 1.0
  * @author Andres Ante
  * @author Edward Pino
  * @author Xavier Pita
  */
 public class Boton {
+
     private Button btn;
-    
-    public Boton(String nombre, String estilo, double ancho, double alto, double posX, double posY,double borde, Color color) {
+
+    public Boton(String nombre, String estilo, double ancho, double alto, double posX, double posY, double borde, Color color) {
         btn = new Button(nombre);
         btn.setPrefSize(ancho, alto);
         btn.setLayoutX(posX);
@@ -30,11 +32,12 @@ public class Boton {
         btn.setTextFill(color);
         btn.addEventHandler(MouseEvent.MOUSE_MOVED, new MouseHandlerMove());
         btn.addEventHandler(MouseEvent.MOUSE_EXITED, new MouseHandlerExited());
-    
+
     }
 
     /**
      * Método que devuelve un boton.
+     *
      * @return Button
      */
     public Button getBtn() {
@@ -43,27 +46,27 @@ public class Boton {
 
     /**
      * Método que modifica un boton.
+     *
      * @param btn de tipo Button que representa un boton.
      */
     public void setBtn(Button btn) {
         this.btn = btn;
     }
-    
-    private class MouseHandlerMove implements EventHandler<MouseEvent>{
+
+    private class MouseHandlerMove implements EventHandler<MouseEvent> {
 
         @Override
         public void handle(MouseEvent event) {
             btn.setTextFill(Color.DARKSALMON);
-         }
+        }
     }
-    
-    private class MouseHandlerExited implements EventHandler<MouseEvent>{
+
+    private class MouseHandlerExited implements EventHandler<MouseEvent> {
 
         @Override
         public void handle(MouseEvent event) {
             btn.setTextFill(Color.DARKSLATEBLUE);
         }
     }
-    
- 
+
 }

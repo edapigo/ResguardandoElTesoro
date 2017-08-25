@@ -11,22 +11,22 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * 
+ *
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
  */
 public class ElTesoroDelPirata extends Application {
-    
+
     @Override
     public void start(Stage escenario) throws Exception {
-        
+
         PaneOrganizer po = new PaneOrganizer(escenario);
-        
+
         escenario.setScene(po.getInicio());
-        
+
         escenario.setTitle("Resguardando el Tesoro del Pirata");
-        po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));        
+        po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));
         escenario.setResizable(false);
         escenario.show();
     }
@@ -37,6 +37,5 @@ public class ElTesoroDelPirata extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    
+
 }

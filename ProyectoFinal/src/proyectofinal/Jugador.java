@@ -7,17 +7,19 @@ package proyectofinal;
 
 /**
  * Clase para representar el jugador del juego.
+ *
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
  */
 public class Jugador {
+
     private String nombre;
     private int monedas;
     private Dificultad dificultad;
 
     public Jugador() {
-        
+
     }
 
     public Jugador(String nombre, int monedas, Dificultad dificultad) {
@@ -49,7 +51,5 @@ public class Jugador {
     public void setDificultad(Dificultad dificultad) {
         this.dificultad = dificultad;
     }
-    
-    
-    
+
 }

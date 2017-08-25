@@ -19,43 +19,44 @@ import javafx.stage.Stage;
 
 /**
  * Una clase para representar la pantalla de juego.
+ *
  * @author Andres Ante
  * @author Edward Pino
  * @author Juan Xavier Pita
  */
 public class DatosJuego {
-    
+
     private Scene partida;
-    private String tiempo;//LABEL
+    private String tiempo;
     private String fecha;
-    private int nivel;// LABEL
     private BorderPane root;
     private Image imagen, imagenFondo;
     private ImageView iv, ivf;
-//    private String ;
-    
+
     public DatosJuego() {
-        
+
     }
-    
+
     public DatosJuego(Stage escenario, Jugador player) {
         this.tiempo = "";
         this.fecha = "";
         this.root = new BorderPane();
-        
+
         // CENTRO
         Pane centro = new Pane();
         try {
-            imagen= new Image("fondoJuego.jpg");
-        } catch(Exception e) {System.out.println("No lee imagen ");}
+            imagen = new Image("fondoJuego.jpg");
+        } catch (Exception e) {
+            System.out.println("No lee imagen ");
+        }
         iv = new ImageView(imagen);
         iv.setFitHeight(632);
         iv.setFitWidth(1000);
-        
-        JackSparrow j = new JackSparrow(2,50,50,"captainSparrow.png" ,150,120,TipoArma.LLUVIA_DINAMITA,escenario.getScene());// validad bien esto
-        
+
+        JackSparrow j = new JackSparrow(50, 50, "captainSparrow.png", 150, 120, TipoArma.LLUVIA_DINAMITA, escenario.getScene());// validad bien esto
+
         centro.getChildren().addAll(iv, j.getImageCapitan());
-               
+
         // TOP
         HBox top = new HBox();
         top.setSpacing(30);
@@ -87,61 +88,60 @@ public class DatosJuego {
         boxTiempo.getChildren().addAll(tagTiempo.getL(), labTiempo.getL());
 
         top.getChildren().addAll(circulo, boxNombre, boxNivel, boxMonedas, boxTiempo);
-        
-        
-        
+
         // BOTTOM
         HBox bottom = new HBox();
         bottom.setSpacing(20);
         bottom.setPadding(new Insets(0, 0, 12, 700));   // top, right, bottom, left
-        
-        Boton btnPause = new Boton("Pausa","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
-        Boton btnBack = new Boton("Atrás","-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
-        
+
+        Boton btnPause = new Boton("Pausa", "-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+        Boton btnBack = new Boton("Atrás", "-fx-font: 20 century; -fx-background-radius: 30;", 130, 50, 520, 410, 10, Color.DARKSLATEBLUE);
+
         bottom.getChildren().addAll(btnPause.getBtn(), btnBack.getBtn());
-        
-        try{
-            imagenFondo= new Image("fondo2.png");
-        }catch(Exception e){System.out.println("No lee imagen ");}
-        ivf= new ImageView(imagenFondo);
+
+        try {
+            imagenFondo = new Image("fondo2.png");
+        } catch (Exception e) {
+            System.out.println("No lee imagen ");
+        }
+        ivf = new ImageView(imagenFondo);
         ivf.setFitHeight(750);
         ivf.setFitWidth(1000);
-        
+
         root.getChildren().add(ivf);
         root.setCenter(centro);
         root.setTop(top);
         root.setBottom(bottom);
-        
+
 //        root.getBottom().setStyle("-fx-background-color: #DAA520");
         partida = new Scene(root, 1000, 750);
-        
+
         btnPause.getBtn().setOnAction(e -> {
             // BOTON PARA PAUSAR JUEGO (Usar Threads)
         });
-        
+
         btnBack.getBtn().setOnAction(e -> {
             EligeCapitan ec = new EligeCapitan(escenario, player);
             ec.getElegirCapitan().setCursor(new ImageCursor(new Image("cursor.png")));
             escenario.setScene(ec.getElegirCapitan());
         });
-        
-        
-    }    
-    
+
+    }
+
     public DatosJuego(String tiempo, String fecha, BorderPane root) {
         this.tiempo = tiempo;
         this.fecha = fecha;
         this.root = root;
     }
-    
+
     public Scene getPartida() {
         return partida;
     }
-    
+
     public String getTiempo() {
         return tiempo;
     }
-    
+
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
@@ -149,17 +149,9 @@ public class DatosJuego {
     public String getFecha() {
         return fecha;
     }
-    
+
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public int getNivel() {
-         return nivel;
-    }
-    
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
     }
 
     public BorderPane getRoot() {
@@ -169,6 +161,5 @@ public class DatosJuego {
     public void setRoot(BorderPane root) {
         this.root = root;
     }
-    
-    
+
 }
