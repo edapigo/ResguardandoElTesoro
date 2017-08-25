@@ -27,7 +27,7 @@ public class ElTesoroDelPirata extends Application {
 
         escenario.setTitle("Resguardando el Tesoro del Pirata");
         po.getInicio().setCursor(new ImageCursor(new Image("cursor.png")));
-        escenario.setResizable(false);
+//        escenario.setResizable(false);
         escenario.show();
     }
 

@@ -58,22 +58,30 @@ public class DatosJuego {
         iv.setFitHeight(632);
         iv.setFitWidth(1000);
 
+        
+        Bala bala = new Bala("bala.png",25,50,false);
+        bala.start();
+        centro.getChildren().addAll(iv,bala.getImagenBala());
+        
         switch (nombreCapitan) {
             case "Sparrow.png":
                 JackSparrow jack = new JackSparrow(50, 50, "captainSparrow.png", 120, 90, TipoArma.LLUVIA_DINAMITA, partida);
-                centro.getChildren().addAll(iv, jack.getImageCapitan());
+                centro.getChildren().add(jack.getImageCapitan());
                 break;
             case "Barbossa.png":
                 Barbossa barbossa = new Barbossa(50, 50, "Barbossa.png", 120, 90, TipoArma.BOMBAS_FETIDAS, partida);
-                centro.getChildren().addAll(iv, barbossa.getImageCapitan());
+                centro.getChildren().add(barbossa.getImageCapitan());
                 break;
             case "Salazar.png":
                 Salazar salazar = new Salazar(50, 50, "Salazar.png", 120, 90, TipoArma.CAÑON_MUERTE, partida);
-                centro.getChildren().addAll(iv, salazar.getImageCapitan());
+                centro.getChildren().add(salazar.getImageCapitan());
                 break;
             default:
                 System.out.println("Error al ubicar su capitan");
         }
+
+        
+        
 
         GenerarPiratas enemigos = new GenerarPiratas(centro, piratas, false);
 
