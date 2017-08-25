@@ -28,15 +28,18 @@ public class Pirata extends Thread {
     }
 
     // DIMENSIONES DEL PIRATA = ANCHO -> 90 | ALTO -> 120
-    public Pirata(String nombreImagen, int posX, int posY, boolean finPartida) {
+    public Pirata(String nombreImagen, int posX, int posY, boolean finPartida, Jugador player) {
         this.posX = posX;
         this.posY = posY;
+        this.player = player;
         this.finPartida = finPartida;
 
         try {
             pirata = new ImageView(new Image(nombreImagen));
             pirata.setFitWidth(90);
             pirata.setFitHeight(120);
+            pirata.setLayoutX(posY);
+            pirata.setLayoutY(posY);
         } catch (Exception e) {
             System.out.println("No lee imagen");
         }
@@ -44,18 +47,17 @@ public class Pirata extends Thread {
 
     @Override
     public void run() {
+        while(!(pirata.getLayoutX() <=-80)){
+            try {
 
-        try {
-            this.setPosX(this.getPosX() - 1);
-
-            Platform.runLater(() -> {
-                Pirata.this.getPirata().setLayoutX(Pirata.this.getPirata().getLayoutX() - this.getPosX());
-                System.out.println(this.getPosX());
-//                System.out.println(Pirata.this.posY);
-            });
-            Thread.sleep(this.player.getDificultad().getVelocidad() * 10);
-        } catch (InterruptedException e) {
-            System.out.println("Se ha interrumpido el proceso");
+                Platform.runLater(() -> {
+                    pirata.setLayoutX(pirata.getLayoutX()-15);
+                    System.out.println("POSICION PIRATAS: " + pirata.getLayoutX());
+                });
+                Thread.sleep(400/player.getDificultad().getVelocidad());//ARREGLAR
+            } catch (InterruptedException e) {
+                System.out.println("Se ha interrumpido el proceso");
+            }
         }
 
     }
