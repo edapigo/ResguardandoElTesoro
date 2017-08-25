@@ -84,6 +84,7 @@ public class DatosJuego {
         
 
         GenerarPiratas enemigos = new GenerarPiratas(centro, piratas, false);
+        enemigos.start();
 
         // TOP
         HBox top = new HBox();

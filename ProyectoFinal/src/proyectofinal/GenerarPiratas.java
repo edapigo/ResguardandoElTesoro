@@ -36,9 +36,9 @@ public class GenerarPiratas extends Thread {
 
     @Override
     public void run() {
-        while (finPartida == false) {
-            if (piratasAlmacenados.isEmpty()) {
-                for (int i = 0; i < (this.player.getDificultad().getNumPiratas()); i++) {
+//        while (finPartida == false) {
+            if (piratasAlmacenados.isEmpty()) {//this.player.getDificultad().getNumPiratas()
+                for (int i = 0; i < 15; i++) {
                     int posicion = new Random().nextInt(posiciones.length);
                     pirata = new Pirata("Pirata.png", 1100, posicion, finPartida);
                     piratasAlmacenados.add(pirata);
@@ -61,5 +61,5 @@ public class GenerarPiratas extends Thread {
             });
         }
 
-    }
+//    }
 }

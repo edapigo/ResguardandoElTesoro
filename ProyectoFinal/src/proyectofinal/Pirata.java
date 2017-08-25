@@ -49,8 +49,8 @@ public class Pirata extends Thread {
             this.setPosX(this.getPosX() - 1);
 
             Platform.runLater(() -> {
-                Pirata.this.getPirata().setLayoutX(Pirata.this.getPosX());
-                System.out.println(Pirata.this.posX);
+                Pirata.this.getPirata().setLayoutX(Pirata.this.getPirata().getLayoutX() - this.getPosX());
+                System.out.println(this.getPosX());
 //                System.out.println(Pirata.this.posY);
             });
             Thread.sleep(this.player.getDificultad().getVelocidad() * 10);

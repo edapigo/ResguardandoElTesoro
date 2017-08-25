@@ -57,7 +57,7 @@ public class Bala extends Thread {
                     @Override
                     public void run() {
                         imagenBala.setLayoutX(imagenBala.getLayoutX() + 15);
-                        System.out.println(imagenBala.getLayoutX());
+                        System.out.println("Bala: " + imagenBala.getLayoutX());
                     }
                 });
                 Thread.sleep(150);
